@@ -1,21 +1,20 @@
-const parse = require('pg-connection-string').parse;
-const config = parse(process.env.DATABASE_URL)
+  const parse = require('pg-connection-string').parse;
+  const config = parse(process.env.DATABASE_URL ? process.env.DATABASE_URL : '');
 
 module.exports = ({ env }) => {
-
   if(env('NODE_ENV') === 'development'){
     return {
       defaultConnection: 'default',
       connections: {
         default: {
-          connector: 'bookshelf',
-          settings: {
+            connector: 'bookshelf',
+            settings: {
             client: 'sqlite',
             filename: env('DATABASE_FILENAME', '.tmp/data.db'),
-          },
-          options: {
+            },
+            options: {
             useNullAsDefault: true,
-          },
+            },
         },
       },
     }
