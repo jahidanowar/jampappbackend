@@ -39,7 +39,7 @@
     },
     "slug": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "Summary": {
       "type": "text",
